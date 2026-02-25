@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinZen — Take Control of Your Money</title>
+  <meta name="description"
+    content="Financial education, expense tracking, and savings tools for young professionals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+            <rect width="36" height="36" rx="10" fill="url(#logoGrad)" />
+            <path d="M10 24L14 16L19 20L26 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36">
+                <stop stop-color="#6C63FF" />
+                <stop offset="1" stop-color="#3CD3AD" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span>FinZen</span>
+      </a>
+      <div class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#learn">Learn</a>
+        <a href="#track">Track</a>
+        <a href="#tools">Tools</a>
+        <a href="#blog">Blog</a>
+        <a href="#about">About</a>
+        <div class="theme-toggle" id="themeToggle">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </div>
+        <a href="#" class="btn btn-primary login-btn">Login / Sign Up</a>
+      </div>
+      <button class="mobile-menu-toggle" id="menuToggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <header class="hero" id="home">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="badge">🚀 Smart Money Management</div>
+        <h1>Take Control of Your Money in Your 20s</h1>
+        <p>Learn smart strategies. Track expenses. Build real savings. Your journey to financial freedom starts here.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" id="btnStartTracking">Start Tracking</button>
+          <button class="btn btn-secondary btn-lg" id="btnExploreTips">Explore Financial Tips</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-img-container">
+          <!-- Placeholder for hero image since generator failed -->
+          <div class="hero-placeholder-visual">
+            <div class="mock-dash">
+              <div class="mock-line line-1"></div>
+              <div class="mock-line line-2"></div>
+              <div class="mock-growth"></div>
+            </div>
+            <div class="floating-icon icon-1">💰</div>
+            <div class="floating-icon icon-2">📈</div>
+          </div>
+          <div class="glow-blob"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== DASHBOARD PREVIEW & TRACKER ========== -->
+  <section class="dashboard-preview" id="track">
+    <div class="container section-header">
+      <h2>Smart Dashboard</h2>
+      <p>Everything you need to track your finances in one place.</p>
+      <div class="dashboard-controls">
+        <div class="month-nav">
+          <button id="prevMonth">←</button>
+          <span id="currentMonthLabel">February 2026</span>
+          <button id="nextMonth">→</button>
+        </div>
+        <div class="dash-actions">
+          <button class="btn btn-primary" id="btnOpenExpenseModal">+ Add Expense</button>
+          <button class="btn btn-secondary" id="btnOpenGoalModal">+ New Goal</button>
+        </div>
+      </div>
+    </div>
+    <div class="container preview-grid">
+      <!-- Summary Cards -->
+      <div class="summary-cards-container">
+        <div class="stat-card">
+          <span class="label">Total Income</span>
+          <span class="value" id="dashIncome">$0</span>
+        </div>
+        <div class="stat-card">
+          <span class="label">Total Expenses</span>
+          <span class="value" id="dashExpenses">$0</span>
+        </div>
+        <div class="stat-card">
+          <span class="label">Balance</span>
+          <span class="value highlight" id="dashBalance">$0</span>
+        </div>
+      </div>
+
+      <!-- Insight Cards -->
+      <div class="insight-grid">
+        <div class="insight-card">
+          <div class="insight-icon">❤️</div>
+          <div class="insight-info">
+            <span class="label">Health Score</span>
+            <span class="value" id="healthScore">0/100</span>
+          </div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">🔥</div>
+          <div class="insight-info">
+            <span class="label">Top Spending</span>
+            <span class="value" id="topCategory">N/A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expense Tracker Card -->
+      <div class="preview-card card-tracking">
+        <div class="preview-card-header">
+          <h3>Recent Expenses</h3>
+          <span class="preview-tag">Live Feed</span>
+        </div>
+        <div class="search-container">
+          <input type="text" id="expenseSearch" class="search-input" placeholder="Search expenses..." />
+        </div>
+        <div class="expense-list-container" id="expenseList">
+          <p class="empty-state">No expenses tracked yet.</p>
+        </div>
+        <div class="chart-container">
+          <canvas id="expenseChart" width="300" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Savings Goals Card -->
+      <div class="preview-card card-savings">
+        <div class="preview-card-header">
+          <h3>Savings Goals</h3>
+        </div>
+        <div class="goals-list-container" id="goalsGrid">
+          <p class="empty-state">No goals set yet.</p>
+        </div>
+      </div>
+
+      <!-- Saved Calculations Card -->
+      <div class="preview-card card-saved-calcs">
+        <div class="preview-card-header">
+          <h3>Saved Calculations</h3>
+          <span class="preview-tag">Insights</span>
+        </div>
+        <div class="saved-calcs-container" id="savedCalcsList">
+          <p class="empty-state">No saved results yet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PORTFOLIO SECTION ========== -->
+  <section class="portfolio-section" id="portfolio">
+    <div class="container section-header">
+      <div class="badge">📈 Professional Terminal</div>
+      <h2>Investment Portfolio</h2>
+      <p>Manage your stocks, mutual funds, and assets like a pro.</p>
+    </div>
+    <div class="container portfolio-grid">
+      <!-- Portfolio Stats -->
+      <div class="portfolio-stats">
+        <div class="stat-card portfolio-stat">
+          <span class="label">Total Invested</span>
+          <span class="value" id="portInvested">$0</span>
+        </div>
+        <div class="stat-card portfolio-stat">
+          <span class="label">Current Value</span>
+          <span class="value" id="portCurrent">$0</span>
+        </div>
+        <div class="stat-card portfolio-stat">
+          <span class="label">Total Profit/Loss</span>
+          <div class="pl-flex">
+            <span class="value" id="portPL">$0</span>
+            <span class="change-pct" id="portPLPct">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio UI Grid -->
+      <div class="portfolio-main-grid">
+        <!-- Asset List Card -->
+        <div class="preview-card terminal-card">
+          <div class="preview-card-header">
+            <h3>Holdings</h3>
+            <button class="btn btn-primary btn-sm" id="btnOpenInvestModal">+ Add Asset</button>
+          </div>
+          <div class="terminal-table-container">
+            <table class="terminal-table">
+              <thead>
+                <tr>
+                  <th>Asset</th>
+                  <th>QTY</th>
+                  <th>Buy Price</th>
+                  <th>Curr Price</th>
+                  <th>P/L</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="investList">
+                <!-- Data rows injected by JS -->
+              </tbody>
+            </table>
+            <div id="investEmpty" class="empty-state">No investments added yet.</div>
+          </div>
+        </div>
+
+        <!-- Portfolio Analysis Card -->
+        <div class="preview-card terminal-card">
+          <div class="preview-card-header">
+            <h3>Allocation & Risk</h3>
+            <span class="preview-tag risk-tag" id="riskLabel">Safe</span>
+          </div>
+          <div class="portfolio-viz">
+            <div class="viz-box">
+              <canvas id="allocationChart"></canvas>
+            </div>
+            <div class="analysis-stats">
+              <div class="analysis-item">
+                <span class="analysis-label">Diversification Score</span>
+                <strong id="divScore">0/100</strong>
+              </div>
+              <div class="analysis-item">
+                <span class="analysis-label">Primary Asset</span>
+                <strong id="topBranch">N/A</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LEARNING SECTION ========== -->
+  <section class="learning" id="learn">
+    <div class="container section-header">
+      <h2>Master Your Finances</h2>
+      <p>Learn the basics and build a strong foundation for your future.</p>
+    </div>
+    <div class="container learning-grid">
+      <div class="learn-card" data-topic="budgeting">
+        <div class="learn-icon-box">📊</div>
+        <h3>Budgeting Basics</h3>
+        <p>Master the 50/30/20 rule and live within your means.</p>
+        <button class="learn-link btn-ghost">Learn More →</button>
+      </div>
+      <div class="learn-card" data-topic="investing">
+        <div class="learn-icon-box">📈</div>
+        <h3>Investing 101</h3>
+        <p>Simple ways to grow your wealth through stocks and ETFs.</p>
+        <button class="learn-link btn-ghost">Learn More →</button>
+      </div>
+      <div class="learn-card" data-topic="saving">
+        <div class="learn-icon-box">💡</div>
+        <h3>Saving Hacks</h3>
+        <p>Unconventional tips to save an extra $500 every month.</p>
+        <button class="learn-link btn-ghost">Learn More →</button>
+      </div>
+      <div class="learn-card" data-topic="credit">
+        <div class="learn-icon-box">💳</div>
+        <h3>Credit Score Guide</h3>
+        <p>How to build your credit score from scratch as a student.</p>
+        <button class="learn-link btn-ghost">Learn More →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TOOLS SECTION ========== -->
+  <section class="tools" id="tools">
+    <div class="container section-header">
+      <div class="badge">🛠️ Powerful Tools</div>
+      <h2>Financial Calculators</h2>
+      <p>Plan your future with accuracy. Real-time calculations and visual charts.</p>
+    </div>
+    <div class="container calculators-grid">
+      <!-- Cards for each calculator -->
+      <div class="calc-card" data-calc="sip">
+        <div class="calc-icon">🏦</div>
+        <h3>SIP Calculator</h3>
+        <p>Calculate returns on your Systematic Investment Plan.</p>
+        <button class="btn btn-secondary w-full open-calc">Open Calculator</button>
+      </div>
+      <div class="calc-card" data-calc="compound">
+        <div class="calc-icon">📈</div>
+        <h3>Compound Interest</h3>
+        <p>See how your money grows exponentially over time.</p>
+        <button class="btn btn-secondary w-full open-calc">Open Calculator</button>
+      </div>
+      <div class="calc-card" data-calc="emergency">
+        <div class="calc-icon">🚨</div>
+        <h3>Emergency Fund</h3>
+        <p>Determine the safety net you need for peace of mind.</p>
+        <button class="btn btn-secondary w-full open-calc">Open Calculator</button>
+      </div>
+      <div class="calc-card" data-calc="emi">
+        <div class="calc-icon">💳</div>
+        <h3>Loan EMI</h3>
+        <p>Plan your monthly loan repayments and interest costs.</p>
+        <button class="btn btn-secondary w-full open-calc">Open Calculator</button>
+      </div>
+      <div class="calc-card" data-calc="projection">
+        <div class="calc-icon">📅</div>
+        <h3>Savings Projection</h3>
+        <p>Forecast your total savings based on monthly contributions.</p>
+        <button class="btn btn-secondary w-full open-calc">Open Calculator</button>
+      </div>
+      <div class="calc-card" data-calc="fire">
+        <div class="calc-icon">🔥</div>
+        <h3>FIRE Calculator</h3>
+        <p>Find out when you can achieve Financial Independence.</p>
+        <button class="btn btn-secondary w-full open-calc">Open Calculator</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DAILY TIP SECTION ========== -->
+  <section class="daily-tip">
+    <div class="container tip-wrapper">
+      <div class="tip-card">
+        <div class="tip-icon">💡</div>
+        <div class="tip-content">
+          <h3>Daily Financial Tip</h3>
+          <p>"Automate your savings. If it happens before you see the money, you're less likely to spend it."</p>
+        </div>
+        <div class="tip-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials" id="about">
+    <div class="container section-header">
+      <h2>What Our Users Say</h2>
+      <p>Join thousands of young adults who have transformed their financial life with FinZen.</p>
+    </div>
+    <div class="container carousel-wrapper">
+      <div class="carousel" id="testimonialCarousel">
+        <div class="testimonial-card">
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/150?u=sarah" alt="Sarah" />
+            <div>
+              <strong>Sarah Jenkins</strong>
+              <span>Marketing Specialist, 24</span>
+            </div>
+          </div>
+          <p>"FinZen made budgeting actually fun. I saved enough for my first solo trip to Japan in just 8 months!"</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/150?u=alex" alt="Alex" />
+            <div>
+              <strong>Alex Rivera</strong>
+              <span>Final Year Student, 21</span>
+            </div>
+          </div>
+          <p>"The educational cards are a lifesaver. I finally understand how credit scores work without falling
+            asleep."</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/150?u=james" alt="James" />
+            <div>
+              <strong>James Chen</strong>
+              <span>Software Engineer, 26</span>
+            </div>
+          </div>
+          <p>"A premium tool that feels like it was built for us. Simple, smart, and highly motivating."</p>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="nav-prev" id="prevTestimonial">←</button>
+        <button class="nav-next" id="nextTestimonial">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWSLETTER ========== -->
+  <section class="newsletter">
+    <div class="container newsletter-content">
+      <h2>Join 15,000+ Young Money Builders</h2>
+      <p>Get weekly tips, strategies, and tools delivered to your inbox.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+            <rect width="36" height="36" rx="10" fill="url(#logoGradF)" />
+            <path d="M10 24L14 16L19 20L26 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <defs>
+              <linearGradient id="logoGradF" x1="0" y1="0" x2="36" y2="36">
+                <stop stop-color="#6C63FF" />
+                <stop offset="1" stop-color="#3CD3AD" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>FinZen</span>
+        </a>
+        <p>A personal finance coach + expense diary + savings planner. All in one modern platform.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#learn">Learn</a>
+        <a href="#track">Track</a>
+        <a href="#tools">Tools</a>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <a href="#">Blog</a>
+        <a href="#">Financial Tools</a>
+        <a href="#">Guides</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container bottom-content">
+        <span>&copy; 2026 FinZen. Built with ❤️ for Gen Z.</span>
+        <div class="legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- ========== MODALS ========== -->
+  <!-- Expense Modal -->
+  <div class="modal-overlay" id="expenseModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="expenseModalTitle">Add Expense</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <form id="expenseForm">
+        <input type="hidden" id="expenseId" />
+        <div class="form-group">
+          <label>Amount ($)</label>
+          <input type="number" id="expAmount" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select id="expCategory" required>
+            <option value="Rent">🏠 Rent</option>
+            <option value="Food">🍔 Food</option>
+            <option value="Transport">🚗 Transport</option>
+            <option value="Shopping">🛍️ Shopping</option>
+            <option value="Subscriptions">📱 Subscriptions</option>
+            <option value="Education">📚 Education</option>
+            <option value="Emergency">🚨 Emergency</option>
+            <option value="Miscellaneous">📦 Miscellaneous</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="expDate" required />
+        </div>
+        <div class="form-group">
+          <label>Description (Optional)</label>
+          <input type="text" id="expDescription" placeholder="e.g. Netflix" />
+        </div>
+        <button type="submit" class="btn btn-primary w-full">Save Expense</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Goal Modal -->
+  <div class="modal-overlay" id="goalModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>New Savings Goal</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <form id="goalForm">
+        <input type="hidden" id="goalId" />
+        <div class="form-group">
+          <label>Goal Name</label>
+          <input type="text" id="goalName" placeholder="e.g. New Laptop" required />
+        </div>
+        <div class="form-group">
+          <label>Target Amount ($)</label>
+          <input type="number" id="goalTarget" required />
+        </div>
+        <div class="form-group">
+          <label>Monthly Contribution ($)</label>
+          <input type="number" id="goalContribution" required />
+        </div>
+        <div class="form-group">
+          <label>Initial Savings ($)</label>
+          <input type="number" id="goalSaved" value="0" />
+        </div>
+        <div class="form-group">
+          <label>Target Date</label>
+          <input type="date" id="goalDate" required />
+        </div>
+        <div class="form-group">
+          <label>Icon (Emoji)</label>
+          <input type="text" id="goalIcon" placeholder="🎯" value="🎯" />
+        </div>
+        <button type="submit" class="btn btn-primary w-full">Create Goal</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Learning Detail Modal -->
+  <div class="modal-overlay" id="learnModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="learnModalTitle">Financial Tip</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div id="learnModalContent" class="learn-content-detail">
+        <!-- Content injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator Modal -->
+  <div class="modal-overlay" id="calcModal">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h3 id="calcModalTitle">Calculator</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="calc-modal-grid">
+        <div class="calc-inputs" id="calcInputsContainer">
+          <!-- Dynamic form injected here -->
+        </div>
+        <div class="calc-viz">
+          <div class="viz-header" id="calcResultLabel">Total Value</div>
+          <div class="viz-value" id="calcResultValue">$0</div>
+          <div class="viz-chart-box">
+            <canvas id="calcChart"></canvas>
+          </div>
+          <button class="btn btn-primary w-full" id="btnSaveCalc" style="margin-top: 20px;">Save Result</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Investment Modal -->
+  <div class="modal-overlay" id="investModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Track New Asset</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <form id="investForm">
+        <div class="form-group">
+          <label>Asset Symbol/Name</label>
+          <input type="text" id="invName" placeholder="e.g. AAPL, BTC, NIFTY50" required />
+        </div>
+        <div class="form-group">
+          <label>Asset Type</label>
+          <select id="invType" required>
+            <option value="Stock">🏢 Stock</option>
+            <option value="Mutual Fund">📈 Mutual Fund</option>
+            <option value="ETF">🌍 ETF</option>
+            <option value="Crypto">🪙 Crypto</option>
+            <option value="Gold">✨ Gold</option>
+          </select>
+        </div>
+        <div class="form-row" style="display: flex; gap: 15px;">
+          <div class="form-group" style="flex: 1;">
+            <label>Quantity</label>
+            <input type="number" id="invQty" step="0.0001" placeholder="0.00" required />
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>Purchase Price</label>
+            <input type="number" id="invPrice" step="0.01" placeholder="0.00" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Purchase Date</label>
+          <input type="date" id="invDate" required />
+        </div>
+        <button type="submit" class="btn btn-primary w-full">Add to Portfolio</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== MONEYMENTOR AI ASSISTANT ========== -->
+  <div class="ai-assistant-wrapper">
+    <!-- Chat Trigger -->
+    <button class="ai-trigger" id="aiTrigger">
+      <div class="trigger-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+      </div>
+      <span class="trigger-badge">AI</span>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="ai-window" id="aiWindow">
+      <div class="ai-header">
+        <div class="ai-info">
+          <div class="ai-avatar">🤖</div>
+          <div class="ai-status">
+            <h4>MoneyMentor AI</h4>
+            <span>Online • Smart Guide</span>
+          </div>
+        </div>
+        <div class="ai-actions">
+          <button class="ai-btn-action" id="aiFullscreen" title="Toggle Fullscreen">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+            </svg>
+          </button>
+          <button class="ai-btn-action" id="aiClose" title="Close Chat">&times;</button>
+        </div>
+      </div>
+
+      <div class="ai-messages" id="aiMessages">
+        <div class="msg bot">
+          <div class="msg-bubble">
+            Hello! I'm MoneyMentor. I can help you analyze your expenses, suggest savings ideas, or explain financial
+            terms. How can I assist you today?
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-typing" id="aiTyping" style="display: none;">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="ai-input-area">
+        <form id="aiForm">
+          <input type="text" id="aiInput" placeholder="Ask me about your spending..." />
+          <button type="submit" class="ai-send-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+</body>
+
+</html>
