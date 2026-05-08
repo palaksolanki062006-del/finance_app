@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Chatbot Test</title></head>
+<body>
+<h1>Chatbot Test Page</h1>
+<p>If you see a chat bubble in the bottom-right corner, the chatbot works!</p>
+
+<div id="chatbot-widget" style="position:fixed;bottom:24px;right:24px;z-index:99999;">
+  <div id="chatbot-window" style="display:none;width:380px;height:550px;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.25);">
+    <iframe src="https://www.chatbase.co/chatbot-iframe/s1ZoBW8nElEXGgF7tXPbT" width="100%" height="100%" frameborder="0" style="border:none;"></iframe>
+  </div>
+  <button id="chatbot-toggle" 
+    onclick="var w=document.getElementById('chatbot-window');if(w.style.display==='none'){w.style.display='block';this.textContent='X';}else{w.style.display='none';this.textContent='Chat';}"
+    style="width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#6C63FF,#3CD3AD);color:#fff;font-size:16px;box-shadow:0 4px 20px rgba(108,99,255,0.4);">Chat</button>
+</div>
+
+</body>
+</html>

@@ -433,6 +433,24 @@
     </div>
   </section>
 
+  <!-- ========== AI ASSISTANT SECTION ========== -->
+  <section class="chatbot-section" id="ai-assistant" style="padding: 80px 0; background: var(--card-bg); border-top: 1px solid var(--border);">
+    <div class="container section-header">
+      <div class="badge">🤖 AI Financial Assistant</div>
+      <h2>Ask FinZen AI</h2>
+      <p>Have a question about your finances or need investment advice? Ask our AI assistant.</p>
+    </div>
+    <div class="container" style="max-width: 1000px; margin: 0 auto; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-xl); border: 1px solid var(--border);">
+      <iframe
+          src="https://www.chatbase.co/chatbot-iframe/s1ZoBW8nElEXGgF7tXPbT"
+          width="100%"
+          style="height: 100%; min-height: 700px; display: block;"
+          frameborder="0"
+          allow="microphone"
+      ></iframe>
+    </div>
+  </section>
+
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container footer-grid">
@@ -485,6 +503,8 @@
       </div>
     </div>
   </footer>
+
+
 
   <script src="script.js"></script>
 
@@ -643,67 +663,24 @@
     </div>
   </div>
 
-  <!-- ========== MONEYMENTOR AI ASSISTANT ========== -->
-  <div class="ai-assistant-wrapper">
-    <!-- Chat Trigger -->
-    <button class="ai-trigger" id="aiTrigger">
-      <div class="trigger-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-        </svg>
-      </div>
-      <span class="trigger-badge">AI</span>
-    </button>
-
-    <!-- Chat Window -->
-    <div class="ai-window" id="aiWindow">
-      <div class="ai-header">
-        <div class="ai-info">
-          <div class="ai-avatar">🤖</div>
-          <div class="ai-status">
-            <h4>MoneyMentor AI</h4>
-            <span>Online • Smart Guide</span>
-          </div>
-        </div>
-        <div class="ai-actions">
-          <button class="ai-btn-action" id="aiFullscreen" title="Toggle Fullscreen">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-            </svg>
-          </button>
-          <button class="ai-btn-action" id="aiClose" title="Close Chat">&times;</button>
-        </div>
-      </div>
-
-      <div class="ai-messages" id="aiMessages">
-        <div class="msg bot">
-          <div class="msg-bubble">
-            Hello! I'm MoneyMentor. I can help you analyze your expenses, suggest savings ideas, or explain financial
-            terms. How can I assist you today?
-          </div>
-        </div>
-      </div>
-
-      <div class="ai-typing" id="aiTyping" style="display: none;">
-        <span></span><span></span><span></span>
-      </div>
-
-      <div class="ai-input-area">
-        <form id="aiForm">
-          <input type="text" id="aiInput" placeholder="Ask me about your spending..." />
-          <button type="submit" class="ai-send-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="22" y1="2" x2="11" y2="13" />
-              <polygon points="22 2 15 22 11 13 2 9 22 2" />
-            </svg>
-          </button>
-        </form>
-      </div>
+  <!-- ========== FLOATING CHATBOT WIDGET ========== -->
+  <div id="chatbot-widget" style="position:fixed;bottom:24px;right:24px;z-index:99999;display:flex;flex-direction:column;align-items:flex-end;gap:16px;">
+    <div id="chatbot-window" style="display:none;width:400px;height:650px;max-height:calc(100vh - 100px);max-width:calc(100vw - 48px);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.25);background:var(--card-bg, #fff);border:1px solid var(--border, #eee);">
+      <iframe 
+        src="https://www.chatbase.co/chatbot-iframe/s1ZoBW8nElEXGgF7tXPbT" 
+        width="100%" 
+        height="100%" 
+        frameborder="0" 
+        allow="microphone" 
+        style="border:none;height:100%;">
+      </iframe>
     </div>
+    <button id="chatbot-toggle" 
+      onclick="var w=document.getElementById('chatbot-window');var isHidden=w.style.display==='none';w.style.display=isHidden?'block':'none';this.innerHTML=isHidden?'<svg width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><line x1=\'18\' y1=\'6\' x2=\'6\' y2=\'18\'></line><line x1=\'6\' y1=\'6\' x2=\'18\' y2=\'18\'></line></svg>':'<svg width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z\'></path></svg>';"
+      style="width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#6C63FF,#3CD3AD);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(108,99,255,0.4);transition:transform 0.2s ease;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </button>
   </div>
 
-  <!-- Toast -->
-  <div class="toast" id="toast"></div>
 </body>
-
 </html>
